@@ -1,20 +1,10 @@
 // mysql 모듈 사용
-const mysql = require('mysql');
 const express = require('express');
 const fs = require('fs');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
-
+const connection = require('./lib/db');
 const app = express();
-
-// 연결할 DB 정보입력
-const connection = mysql.createConnection({
-    host: 'database-1.chqupvl9apyw.ap-northeast-2.rds.amazonaws.com',
-    user: 'admin',
-    password: 'dmcom4544**',
-    database: 'comicbook',
-    port: '3306',
-});
 
 
 app.use(bodyParser.urlencoded({
@@ -86,7 +76,7 @@ app.get('/delete/:id', (request, response) => {
 app.listen(3000, () => {
     console.log('Server is running port 3000!');
     // 데이터베이스 연결
-    connection.connect();
+    // connection.connect();
 });
     
 
